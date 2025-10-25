@@ -44,7 +44,7 @@ const defaultValue: Setting = {
     auto_read_copy_filter: false,
     auto_save_copy: true,
     locale: "_default",
-    theme: "auto",
+    theme: "dark",
     common: [...commonTool],
     layout: "complex",
     proxy_enable: false,

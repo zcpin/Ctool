@@ -17,7 +17,7 @@ export const runtime = new (class implements PlatformRuntime {
     }
 
     getLocale() {
-        return navigator.language
+        return "zh-CN"
     }
 
     storage() {
