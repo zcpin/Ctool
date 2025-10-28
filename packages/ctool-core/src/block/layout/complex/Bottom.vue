@@ -9,14 +9,14 @@
                 <Icon :size="18" hover name="history" @click="openHistory = !openHistory" :tooltip="$t('tool_'+storeOperate.items.tool) + ' -' + $t('main_history')"/>
             </span>
             <Icon hover :size="18" name="setting" @click="event.dispatch('open_setting')" :tooltip="$t('main_ui_setting')"/>
-            <Icon
-                :size="18"
-                v-if="platform.isChromium() || platform.isFirefox() || platform.isWeb()"
-                hover
-                name="full"
-                :tooltip="$t('main_ui_open_full')"
-                @click="openUrl()"
-            />
+            <!-- <Icon -->
+            <!--     :size="18" -->
+            <!--     v-if="platform.isChromium() || platform.isFirefox() || platform.isWeb()" -->
+            <!--     hover -->
+            <!--     name="full" -->
+            <!--     :tooltip="$t('main_ui_open_full')" -->
+            <!--     @click="openUrl()" -->
+            <!-- /> -->
             <Icon v-if="platform.isDesktop()" :size="18" hover name="devtools" :tooltip="$t('main_ui_open_devtools')" @click="platform.runtime.call('toggleDevTools')"/>
         </Align>
     </div>
@@ -28,12 +28,11 @@
 <script setup lang="ts">
 import useOperate from "@/store/operate";
 import useSetting from "@/store/setting";
-import History from "../../History.vue"
-import platform from "@/helper/platform"
-import Notice from "../../Notice.vue"
-import {openUrl} from "@/helper/helper"
+import History from "../../History.vue";
+import platform from "@/helper/platform";
+import Notice from "../../Notice.vue";
 import getHistoryInstance from "@/helper/history";
-import {onMounted, onUnmounted} from "vue";
+import { onMounted, onUnmounted } from "vue";
 import event from "@/event";
 
 const storeOperate = useOperate()

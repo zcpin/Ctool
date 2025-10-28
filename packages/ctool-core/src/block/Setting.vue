@@ -32,40 +32,40 @@
                     :options="['complex','simple'].map((item)=>{return {value:item,label:$t('main_setting_layout_'+item)}})"
                 />
             </div>
-            <span style="grid-row-start: span 3">{{ $t('main_ui_clipboard') }}</span>
-            <div>
-                <Bool
-                    :label="$t(`main_copy_results_to_clipboard`)"
-                    :model-value="storeSetting.items.auto_save_copy"
-                    @change="(value)=>storeSetting.save('auto_save_copy',value)"
-                />
-            </div>
-            <div>
-                <Align>
-                    <Bool
-                        :disabled="clipboardState!=='granted'"
-                        :label="$t(`main_read_content_from_clipboard`)"
-                        :model-value="storeSetting.items.auto_read_copy"
-                        @change="(value)=>storeSetting.save('auto_read_copy',value)"
-                    />
-                    <Link
-                        v-if="clipboardState==='prompt'"
-                        style="font-size: .875rem"
-                        type="primary"
-                        href="/tool.html#/clipboard"
-                    >
-                        {{ $t('main_clipboard_get') }}
-                    </Link>
-                </Align>
-            </div>
-            <div>
-                <Bool
-                    :disabled="!storeSetting.items.auto_read_copy"
-                    :label="$t(`main_read_clipboard_content_trim`)"
-                    :model-value="storeSetting.items.auto_read_copy_filter"
-                    @change="(value)=>storeSetting.save('auto_read_copy_filter',value)"
-                />
-            </div>
+            <!-- <span style="grid-row-start: span 3">{{ $t('main_ui_clipboard') }}</span> -->
+            <!-- <div> -->
+            <!--     <Bool -->
+            <!--         :label="$t(`main_copy_results_to_clipboard`)" -->
+            <!--         :model-value="storeSetting.items.auto_save_copy" -->
+            <!--         @change="(value)=>storeSetting.save('auto_save_copy',value)" -->
+            <!--     /> -->
+            <!-- </div> -->
+            <!-- <div> -->
+            <!--     <Align> -->
+            <!--         <Bool -->
+            <!--             :disabled="clipboardState!=='granted'" -->
+            <!--             :label="$t(`main_read_content_from_clipboard`)" -->
+            <!--             :model-value="storeSetting.items.auto_read_copy" -->
+            <!--             @change="(value)=>storeSetting.save('auto_read_copy',value)" -->
+            <!--         /> -->
+            <!--         <Link -->
+            <!--             v-if="clipboardState==='prompt'" -->
+            <!--             style="font-size: .875rem" -->
+            <!--             type="primary" -->
+            <!--             href="/tool.html#/clipboard" -->
+            <!--         > -->
+            <!--             {{ $t('main_clipboard_get') }} -->
+            <!--         </Link> -->
+            <!--     </Align> -->
+            <!-- </div> -->
+            <!-- <div> -->
+            <!--     <Bool -->
+            <!--         :disabled="!storeSetting.items.auto_read_copy" -->
+            <!--         :label="$t(`main_read_clipboard_content_trim`)" -->
+            <!--         :model-value="storeSetting.items.auto_read_copy_filter" -->
+            <!--         @change="(value)=>storeSetting.save('auto_read_copy_filter',value)" -->
+            <!--     /> -->
+            <!-- </div> -->
             <span>{{ $t('main_auto_fill') }}</span>
             <Align>
                 <InputNumber :model-value="storeSetting.items.fill_history_expire" :width="120" @change="(value)=>storeSetting.save('fill_history_expire',value)"/>
@@ -118,15 +118,14 @@
 </template>
 
 <script setup lang="ts">
-import useSetting from "@/store/setting"
-import {useClipboardPermission} from "@/helper/clipboard"
-import {locales, themes} from "@/types"
-import platform from "@/helper/platform"
-import {getLocaleName} from "@/i18n"
-import UtoolsKeyword from "./utools/Keyword.vue"
+import useSetting from "@/store/setting";
+import { locales, themes } from "@/types";
+import platform from "@/helper/platform";
+import { getLocaleName } from "@/i18n";
+import UtoolsKeyword from "./utools/Keyword.vue";
 import Common from "./Common.vue";
-import {version, buildTimestamp} from "@/helper/util";
-import {proxy} from "ctool-config"
+import { buildTimestamp, version } from "@/helper/util";
+import { proxy } from "ctool-config";
 import dayjs from "dayjs";
 import Bool from "@/components/ui/Bool.vue";
 import Align from "@/components/Align.vue";
@@ -145,7 +144,7 @@ const localeOptions = locales.map((item) => {
     return {value: item, label: getLocaleName(item) || ""}
 })
 
-const {state: clipboardState} = useClipboardPermission()
+
 </script>
 <style>
 .ctool-setting {
